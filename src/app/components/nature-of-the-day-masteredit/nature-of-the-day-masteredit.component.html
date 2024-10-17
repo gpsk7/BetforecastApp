@@ -1,0 +1,132 @@
+<!-- <div class="form-page-wrapper"> -->
+    <div class="grid-toolbar">
+        <mat-toolbar>
+            <div class="form_header">
+                <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+                <span>{{ "natureMaster.tittle" | translate }}</span>
+            </div>
+            <span class="spacer"></span>
+            <div>
+                <button mat-button type="button" class="close-button close-button-colored"
+                    routerLink="/natureoftheday">Back</button>
+            </div>
+        </mat-toolbar>
+    </div>
+    <mat-card class="form-page-box">
+        <form #bet="ngForm" [formGroup]="pmFormControl">
+            <div class="row form-fields-container">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.date" | translate }}</mat-label>
+                        <input matInput [matDatepicker]="datepicker" formControlName="date" />
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.dayValue" | translate }}</mat-label>
+                        <input matInput formControlName="dayValue" placeholder="Ex Number">
+                        <mat-error *ngIf="pmFormControl.get('dayValue')?.hasError('pattern')">
+                          Only numeric values
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.nakshatra" | translate }}</mat-label>
+                        <input matInput formControlName="nakshatra" placeholder="Ex Ashwin">
+                        <mat-error *ngIf="pmFormControl.get('nakshatra')?.hasError('pattern')">
+                            Provide letters & spaces
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.natureOfDay" | translate }}</mat-label>
+                        <input matInput formControlName="natureOfDay" placeholder="Ex Solara">
+                        <mat-error *ngIf="pmFormControl.get('natureOfDay')?.hasError('pattern')">
+                            Provide letters & spaces
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.nakshatraNumber" | translate }}</mat-label>
+                        <input matInput formControlName="nakshatraNumber" placeholder="Ex Number">
+                        <mat-error *ngIf="pmFormControl.get('nakshatraNumber')?.hasError('pattern')">
+                         Only numeric values.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row form-fields-container">
+               
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.natureOfDayNo" | translate }}</mat-label>
+                        <input matInput formControlName="natureOfDayNo" placeholder="Ex Number">
+                        <mat-error *ngIf="pmFormControl.get('natureOfDayNo')?.hasError('pattern')">
+                          Only numeric values.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.nruler" | translate }}</mat-label>
+                        <input matInput formControlName="nruler" placeholder="Ex Rowan">
+                        <mat-error *ngIf="pmFormControl.get('nruler')?.hasError('pattern')">
+                            Provide letters & spaces
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.rcolour" | translate }}</mat-label>
+                        <input matInput formControlName="rcolour" placeholder="Ex Crimson">
+                        <mat-error *ngIf="pmFormControl.get('rcolour')?.hasError('pattern')">
+                            Provide letters & spaces
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.rcolourNo" | translate }}</mat-label>
+                        <input matInput formControlName="rcolourNo" placeholder="Ex Number">
+                        <mat-error *ngIf="pmFormControl.get('rcolourNo')?.hasError('pattern')">
+                          Only numeric values.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                        <mat-label>{{ "natureMaster.nrulerNumber" | translate }}</mat-label>
+                        <input matInput formControlName="nrulerNumber" placeholder="Ex Number">
+                        <mat-error *ngIf="pmFormControl.get('nrulerNumber')?.hasError('pattern')">
+                         Only numeric values.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div class="row form-fields-container footer-panel">
+                <!-- <div class="buttons-right-align" *ngIf="isEdit">
+                    <button mat-raised-button color="primary">
+                      {{ "moonmasteredit.delete" | translate }}
+                    </button>
+                  </div> -->
+                <div class="buttons-right-align" *ngIf="isEdit">
+                    <button mat-raised-button color="primary" (click)="updateNatureData()">
+                        {{ "natureMaster.update" | translate }}
+                    </button>
+                </div>
+                <div class="buttons-right-align" *ngIf="!isEdit">
+                    <button mat-raised-button color="primary" (click)="addNatureData()">
+                        {{ "natureMaster.create" | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+    <!-- </div> -->

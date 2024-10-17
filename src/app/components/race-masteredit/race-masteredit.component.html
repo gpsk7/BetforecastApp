@@ -1,0 +1,239 @@
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+        <span>{{ "racemasteredit.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button mat-button type="button" class="close-button close-button-colored"
+          routerLink="/raceMaster">Back</button>
+      </div>
+    </mat-toolbar>
+  </div>
+  <mat-card class="form-page-box">
+    <form #bet="ngForm" [formGroup]="pmFormControl">
+      <div class="row form-fields-container">
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.id" | translate }}</mat-label>
+            <input matInput formControlName="id">
+          </mat-form-field>
+        </div> -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.date" | translate }}</mat-label>
+            <input matInput [matDatepicker]="datepicker" formControlName="date" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.course" | translate }}</mat-label>
+            <input matInput formControlName="course" placeholder="Ex FAKENHAM">
+            <mat-error *ngIf="pmFormControl.get('course')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.country" | translate }}</mat-label>
+            <input matInput formControlName="country" placeholder="Ex UK">
+            <mat-error *ngIf="pmFormControl.get('country')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.raceId" | translate }}</mat-label>
+            <input matInput formControlName="raceId" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('raceId')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.raceDistance" | translate }}</mat-label>
+            <input matInput formControlName="distance" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('distance')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.raceNumber" | translate }}</mat-label>
+            <input matInput formControlName="raceNumber" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('raceNumber')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.time" | translate }}</mat-label>
+            <input matInput formControlName="time" placeholder="Ex 00.00">
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.raceType" | translate }}</mat-label>
+            <input matInput formControlName="raceType">
+          </mat-form-field>
+        </div> -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseName" | translate }}</mat-label>
+            <input matInput formControlName="horseName" placeholder="Ex Storm Chaser">
+            <mat-error *ngIf="pmFormControl.get('horseName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseWeight" | translate }}</mat-label>
+            <input matInput formControlName="horseWeight" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('horseWeight')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseAge" | translate }}</mat-label>
+            <input matInput formControlName="age" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('age')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseColour" | translate }}</mat-label>
+            <input matInput formControlName="horseColour">
+          </mat-form-field>
+        </div> -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.jockeyName" | translate }}</mat-label>
+            <input matInput formControlName="jockeyName" placeholder="Ex Santiago">
+            <mat-error *ngIf="pmFormControl.get('jockeyName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.trainerName" | translate }}</mat-label>
+            <input matInput formControlName="trainerName" placeholder="Ex Thompson">
+            <mat-error *ngIf="pmFormControl.get('trainerName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.speed" | translate }}</mat-label>
+            <input matInput formControlName="speed" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('speed')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>         
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.btnDistance" | translate }}</mat-label>
+            <input matInput formControlName="btnDistance">
+          </mat-form-field>
+        </div> -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.drawnStall" | translate }}</mat-label>
+            <input matInput formControlName="drawnStall" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('drawnStall')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseBallot" | translate }}</mat-label>
+            <input matInput formControlName="horseBallot" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('horseBallot')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.finishPos" | translate }}</mat-label>
+            <input matInput formControlName="finishPos" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('finishPos')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.dayValue" | translate }}</mat-label>
+            <input matInput formControlName="dayValue" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('dayValue')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.form" | translate }}</mat-label>
+            <input matInput formControlName="form" placeholder="Ex:788456">
+            <mat-error *ngIf="pmFormControl.get('form')?.hasError('pattern')">
+              Only numeric values.
+             </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.horseNameCount" | translate }}</mat-label>
+            <input matInput formControlName="horseNameCount">
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.jockeyNameCount" | translate }}</mat-label>
+            <input matInput formControlName="jockeyNameCount">
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "racemasteredit.trainerNameCount" | translate }}</mat-label>
+            <input matInput formControlName="trainerNameCount">
+          </mat-form-field>
+        </div> -->
+     <!-- <div class="row form-fields-container footer-panel">
+          <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary">
+              {{ "racemasteredit.delete" | translate }}
+            </button>
+          </div> -->
+        <div class="buttons-right-align" *ngIf="isEdit">
+          <button mat-raised-button color="primary" (click)="updateRaceMaster()">
+            {{ "racemasteredit.update" | translate }}
+          </button>
+        </div>
+        <div class="buttons-right-align" *ngIf="!isEdit">
+          <button mat-raised-button color="primary" (click)="addRaceMaster()">
+            {{ "racemasteredit.create" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+<!--     
+</div> -->

@@ -1,0 +1,48 @@
+<!-- payment-details.component.html -->
+
+<div class="payment-details-container">
+    <div *ngIf="paymentDetails.length > 0">
+        <h2 style="text-align: center;"> Payment Details for User ID: {{ userId }}</h2>
+        <table>
+            <thead>
+                <tr style="font-size: 15px;">
+                    <th>ID</th>
+                    <th>Payment ID</th>
+                    <th>Order ID</th>
+                    <th>Currency</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of paymentDetails" style="font-size: 13px;">
+                    <td>{{ payment.id }}</td>
+                    <td>{{ payment.paymentId }}</td>
+                    <td>{{ payment.orderId }}</td>
+                    <td>{{ payment.currency }}</td>
+                    <td>{{ payment.amount / 100 | currency:"INR" }}</td>
+                    <!-- <td>{{ payment.status }}</td> -->
+                    <td>
+                        <ng-container *ngIf="payment.status === 'payment_success'; else failed">
+                            <span class="success">✓</span> Success
+                        </ng-container>
+                        <ng-template #failed>
+                            <span class="failed">✗</span> Failed
+                        </ng-template>
+                    </td>
+                    <td>{{ payment.creationTime | date: 'medium' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+      <!-- <button type="button" class="close-button" routerLink="/home">Close</button> -->
+      <button mat-button type="button" mat-raised-button color="primary" routerLink="/home"
+      style="margin-left: 92%">Close</button>
+    </div>
+
+    <div *ngIf="paymentDetails.length === 0">
+        <p>No payment details found for user ID: {{ userId }}</p>
+    </div>
+</div>

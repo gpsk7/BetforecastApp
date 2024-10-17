@@ -1,0 +1,27 @@
+.logout-container {
+    font-family: 'robot', sans-serif;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(215, 215, 215);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border-color: black;
+    text-align: center;
+}
+
+.logout-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.btn-primary {
+    margin-right: 10px;
+    /* Example margin for button spacing */
+    font-size: 13px;
+}

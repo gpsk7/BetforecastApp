@@ -1,0 +1,130 @@
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+        <span>{{ "jockeymasteredit.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button mat-button type="button" class="close-button close-button-colored"
+          routerLink="/jockeyMaster">Back</button>
+      </div>
+    </mat-toolbar>
+  </div>
+  <mat-card class="form-page-box">
+    <form #bet="ngForm" [formGroup]="pmFormControl">
+      <div class="row form-fields-container">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyRegistrationId" | translate }}</mat-label>
+            <input matInput formControlName="jockeyRegistrationId" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyRegistrationId')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyFirstName" | translate }}</mat-label>
+            <input matInput formControlName="jockeyFirstName" placeholder="Ex Seabiscuit">
+            <mat-error *ngIf="pmFormControl.get('jockeyFirstName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyLastName" | translate }}</mat-label>
+            <input matInput formControlName="jockeyLastName" placeholder="Ex Jr">
+            <mat-error *ngIf="pmFormControl.get('jockeyLastName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyAge" | translate }}</mat-label>
+            <input matInput formControlName="jockeyAge" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyAge')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyGender" | translate }}</mat-label>
+            <input matInput formControlName="jockeyGender" placeholder="Ex Male">
+            <mat-error *ngIf="pmFormControl.get('jockeyGender')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row form-fields-container">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyCount" | translate }}</mat-label>
+            <input matInput formControlName="jockeyCount" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyCount')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyCountry" | translate }}</mat-label>
+            <input matInput formControlName="jockeyCountry" placeholder="Ex UK">
+            <mat-error *ngIf="pmFormControl.get('jockeyCountry')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyExperienceYears" | translate }}</mat-label>
+            <input matInput formControlName="jockeyExperienceYears" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyExperienceYears')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyWins" | translate }}</mat-label>
+            <input matInput formControlName="jockeyWins" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyWins')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "jockeymasteredit.jockeyLosses" | translate }}</mat-label>
+            <input matInput formControlName="jockeyLosses" placeholder="Number">
+            <mat-error *ngIf="pmFormControl.get('jockeyLosses')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="row form-fields-container footer-panel">
+          <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary">
+              {{ "jockeymasteredit.delete" | translate }}
+            </button>
+          </div> -->
+        <div class="buttons-right-align" *ngIf="isEdit">
+          <button mat-raised-button color="primary" (click)="updateJockey()">
+            {{ "jockeymasteredit.update" | translate }}
+          </button>
+        </div>
+        <div class="buttons-right-align" *ngIf="!isEdit">
+          <button mat-raised-button color="primary" (click)="addJockey()">
+            {{ "jockeymasteredit.create" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+<!-- </div> -->

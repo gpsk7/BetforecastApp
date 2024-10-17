@@ -1,0 +1,24 @@
+<form class="login-form" (ngSubmit)="submitFeedback()">
+  <h2 class="form-title">Feedback Form</h2>
+  <div class="form-group">
+      <label for="name" style="font-size: 15px;">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="feedback.name" required>
+  </div>
+  <div class="form-group">
+      <label for="email" style="font-size: 15px;">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="feedback.email" required>
+  </div>
+  <div class="form-group">
+      <label for="rating" style="font-size: 15px;">Rating:</label>
+      <select id="rating" name="rating" [(ngModel)]="feedback.rating" required style="font-size: 1.4rem;">
+          <option value="super">Super</option>
+          <option value="good">Good</option>
+          <option value="average">Average</option>
+          <option value="poor">Poor</option>
+      </select>
+  </div>
+  <div class="button-group">
+      <button type="submit" class="submit-button" style="font-size: 1.4rem;">Submit Feedback</button>
+      <button type="button" class="close-button" routerLink="/home" style="font-size: 1.4rem;">Close</button>
+  </div>
+</form>

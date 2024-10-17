@@ -1,0 +1,55 @@
+<div class="container-results">
+<div class="country-name">
+    {{ course }} <span class="selected-date">{{ formatSelectedDate(selectedDate) }}</span>
+    <button class="back-button" (click)="back()">Back</button>
+  </div> 
+  <div class="race-details-container">
+    <div *ngFor="let race of raceNumbersAndTimes" class="race-item">
+        <button class="race-number" (click)="selectRaceTime(race)"> {{ race.time }}</button>   
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  
+  <div class="row">
+    <div class="total-races">
+         Races: {{ totalRaces }}   
+    </div>
+    <div class="race-summary">
+        <p> Runners: {{ participatingHorsesCount }}</p>
+    </div>
+    <div class="race-summary1">
+        <p>Distance: {{ raceDetails[0]?.distance }}</p>
+    </div>
+  </div>
+  <div id="race-details-table">
+    <table class="table table-bordered">
+        <thead cdkDropList (cdkDropListDropped)="onColumnDrop($event)" cdkDropListOrientation="horizontal">
+            <tr>
+                <th *ngFor="let column of displayedColumns; let i = index"
+                    cdkDrag
+                    [cdkDragData]="{ index: i, column: column }" class="table-header">
+                    {{ getTranslation(column) | async }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor="let race of raceDetails">
+                <td *ngFor="let column of displayedColumns"> 
+                    <ng-container *ngIf="column === 'predictionColor'; else defaultCell">
+                        <span 
+                          class="color-box" 
+                          [style.background-color]="race[column] | lowercase" 
+                          [attr.title]="race[column]">
+                        </span>
+                    </ng-container>
+                    <ng-template #defaultCell>
+                        {{ race[column] }}
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>                  
+  </div>
+  </div>
+  

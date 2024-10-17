@@ -1,0 +1,100 @@
+<!-- <div class="form-page-wrapper"> -->
+    <div class="grid-toolbar">
+        <mat-toolbar>
+          <div class="form_header">
+            <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+            <span>{{ "inplayMasteredit.title" | translate }}</span>
+          </div>
+          <span class="spacer"></span>
+          <div>
+            <button mat-button type="button" class="close-button close-button-colored" routerLink="/inplayMaster">Back</button>
+          </div>
+        </mat-toolbar>
+      </div>
+        <mat-card class="form-page-box">
+          <form #bet="ngForm" [formGroup]="pmFormControl">
+            <div class="row form-fields-container">
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "inplayMasteredit.time" | translate }}</mat-label>
+                  <input matInput formControlName="time" placeholder="Ex: 5.00">
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "astrologymasteredit.date" | translate }}</mat-label>
+                  <input matInput [matDatepicker]="datepicker" formControlName="date"  placeholder="Ex: DD-MM-YYYY"/>
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #datepicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "inplayMasteredit.course" | translate }}</mat-label>
+                  <input matInput formControlName="course" placeholder="Ex: SouthWell">
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "inplayMasteredit.country" | translate }}</mat-label>
+                  <input matInput formControlName="country" placeholder="Ex: UK">
+                </mat-form-field>
+              </div>  
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "inplayMasteredit.odds" | translate }}</mat-label>
+                  <input matInput formControlName="odds" placeholder="Ex: 5-23">
+                </mat-form-field>
+              </div>                      
+            </div>
+            <div class="row form-fields-container">
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <mat-form-field class="full-width-field" appearance="fill">
+                  <mat-label>{{ "inplayMasteredit.position1" | translate }}</mat-label>
+                  <input matInput formControlName="position1" placeholder="Ex: 1">
+                  <mat-error *ngIf="pmFormControl.get('position1')?.hasError('pattern')">
+                    Please enter only numeric values.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                      <mat-label>{{ "inplayMasteredit.position2" | translate }}</mat-label>
+                      <input matInput formControlName="position2" placeholder="Ex: 2">
+                      <mat-error *ngIf="pmFormControl.get('position2')?.hasError('pattern')">
+                        Please enter only numeric values.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <mat-form-field class="full-width-field" appearance="fill">
+                      <mat-label>{{ "inplayMasteredit.position3" | translate }}</mat-label>
+                      <input matInput formControlName="position3" placeholder="Ex: 3">
+                      <mat-error *ngIf="pmFormControl.get('position3')?.hasError('pattern')">
+                        Please enter only numeric values.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>                    
+            <div class="row form-fields-container footer-panel">
+              <!-- <div class="buttons-right-align" *ngIf="isEdit">
+                <button mat-raised-button color="primary">
+                  {{ "inplayMasteredit.delete" | translate }}
+                </button>
+              </div> -->
+              <div class="buttons-right-align" *ngIf="isEdit">
+                <button mat-raised-button color="primary" (click)="updateInplayData()">
+                  {{ "inplayMasteredit.update" | translate }}
+                </button>
+              </div>
+              <div class="buttons-right-align" *ngIf="!isEdit">
+                <button mat-raised-button color="primary"  (click)="addInpalyData()" >
+                  {{ "inplayMasteredit.create" | translate }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card>
+      <!-- </div> -->
+    

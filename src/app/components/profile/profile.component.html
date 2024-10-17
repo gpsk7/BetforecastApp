@@ -1,0 +1,17 @@
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email"  readonly/>
+
+    <label for="firstName">FirstName:</label>
+    <input id="firstName" formControlName="firstName" />
+
+    <label for="lastName">LastName:</label>
+    <input id="lastName" formControlName="lastName" />
+
+    <label for="mobile">Mobile:</label>
+    <input id="mobile" formControlName="mobile" readonly/>
+
+    <button type="submit">Update</button>
+</form>

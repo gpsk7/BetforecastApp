@@ -1,0 +1,50 @@
+/* Custom Toolbar Styles */
+.color {
+  font-family: 'robot', sans-serif;
+  background-color: #1976d2;
+
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  align-items: center;
+}
+
+.mat-button {
+  color: white;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.mat-button:hover {
+  background-color: rgba(240, 240, 240, 0.1);
+  transform: scale(1.05);
+}
+
+.mat-menu-item {
+  color: #fffdfd;
+  font-weight: 500;
+}
+
+.mat-menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .mat-button {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}

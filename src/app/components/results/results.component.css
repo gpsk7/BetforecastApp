@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.country-name {
+    margin: 10px 20px;
+    font-weight: bold;
+    font-size: 3rem;
+    position: relative;
+    padding: 5px;
+}
+
+.back-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.selected-date {
+    font-weight: normal;
+    font-size: inherit;
+    color: inherit;
+    font-size: 2rem;
+}
+
+.race-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    
+}
+
+.race-item {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.race-item:hover .race-number {
+    text-decoration: underline; /* Adds underline to the button on hover */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    text-decoration-color: black;
+    
+}
+
+
+.race-number {
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    
+    
+}
+
+.race-number:hover {
+    color: #0056b3;
+    
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 10px 0;
+    gap: 5px;
+    font-size: 1.3rem;
+}
+
+.total-races,
+.race-summary,
+.race-summary1 {
+    padding: 5px;
+    font-size: 1.1rem;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#race-details-table {
+    width: 100%;
+    padding: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    cursor: move;
+}
+
+.table-header:hover {
+    background-color: #0056b3;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+}

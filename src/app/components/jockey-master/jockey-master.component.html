@@ -1,0 +1,122 @@
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<div class="grid-toolbar">
+  <mat-toolbar>
+    <div class="form_header">
+      <mat-icon aria-hidden="false" aria-label="Grid Table">dataset</mat-icon>
+      <span>{{ "jockeyMaster.title" | translate }}</span>
+    </div>
+    <span class="spacer"></span>
+    <button mat-button class="add-icon" aria-label="Add icon-button with add icon"
+      (click)="navigateToJockeyMasteredit({})">
+      <mat-icon>add</mat-icon> {{ "jockeyMaster.addJockeyMaster" | translate }}
+    </button>
+  </mat-toolbar>
+</div>
+<div class="grid-wrapper">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.id" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyRegistrationId">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyRegistrationId" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyRegistrationId }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyFirstName">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyFirstName" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyFirstName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyLastName">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyLastName" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyLastName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyAge">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyAge" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyAge }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyGender">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyGender" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyGender }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyCount">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyCount" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyCount }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyCountry">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyCountry" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyCountry }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyExperienceYears">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyExperienceYears" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyExperienceYears }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyWins">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyWins" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyWins }}</td>
+    </ng-container>
+    <ng-container matColumnDef="jockeyLosses">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.jockeyLosses" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.jockeyLosses }}</td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "jockeyMaster.edit" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element" class="grid-actions">
+        <mat-icon class="pointer" (click)="navigateToJockeyMasteredit(element)">edit</mat-icon>
+      </td>
+    </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "astrologyMaster.delete" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="grid-actions">
+          <mat-icon class="pointer" (click)="deleteJockey(element.id)">delete</mat-icon>
+        </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[25, 50, 100]"
+    (page)="handlePageEvent($event)" aria-label="Select page">
+  </mat-paginator>
+</div>
+<div class="upload-container">
+  <input type="file" id="file-input" (change)="onFileChange($event)" accept=".csv" class="file-input" />
+  <ng-container *ngIf="!fileTooLarge; else errorTemplate">
+    <button (click)="uploadFile()" class="upload-button" [disabled]="isLoading"
+            [ngClass]="{ 'loading': isLoading }">
+      <span *ngIf="!isLoading" style="font-size: 13px;">Upload</span>
+      <span *ngIf="isLoading">Uploading...</span>
+    </button>
+  </ng-container>
+  <ng-template #errorTemplate>
+    <div class="error-message">
+      File size should not exceed 1MB/1000KB.
+    </div>
+  </ng-template>
+  <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+          class="close-button">Close</button>
+</div>

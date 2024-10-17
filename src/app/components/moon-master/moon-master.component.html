@@ -1,0 +1,76 @@
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<!-- <div class="form-page-wrapper"> -->
+    <div class="grid-toolbar">
+        <mat-toolbar>
+          <div class="form_header">
+            <mat-icon aria-hidden="false" aria-label="Grid Table">dataset</mat-icon>
+            <span>{{ "moonMaster.title" | translate }}</span>
+          </div>
+          <span class="spacer"></span>
+          <button mat-button class="add-icon" aria-label="Add icon-button with add icon"
+            (click)="navigateToMoonMasterEdit({})">
+            <mat-icon>add</mat-icon> {{ "moonMaster.addMoonMaster" | translate }}
+          </button>
+        </mat-toolbar>
+      </div>
+      <div class="grid-wrapper">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "moonMaster.id" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "moonMaster.date" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+          </ng-container>
+          <ng-container matColumnDef="moonDay">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "moonMaster.moonDay" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.moonDay }}</td>
+          </ng-container>        
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "moonMaster.edit" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element" class="grid-actions">
+              <mat-icon class="pointer" (click)="navigateToMoonMasterEdit(element)">edit</mat-icon>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "moonMaster.delete" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element" class="grid-actions">
+              <mat-icon class="pointer" (click)="deleteMoon(element.id)">delete</mat-icon>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[25, 50, 100]" (page)="handlePageEvent($event)" aria-label="Select page">
+        </mat-paginator>
+      </div>
+      <div class="upload-container">
+        <input type="file" id="file-input" (change)="onFileChange($event)" accept=".csv" class="file-input" />
+        <ng-container *ngIf="!fileTooLarge; else errorTemplate">
+          <button (click)="uploadFile()" class="upload-button" [disabled]="isLoading"
+                  [ngClass]="{ 'loading': isLoading }">
+            <span *ngIf="!isLoading" style="font-size: 13px;">Upload</span>
+            <span *ngIf="isLoading">Uploading...</span>
+          </button>
+        </ng-container>
+        <ng-template #errorTemplate>
+          <div class="error-message">
+            File size should not exceed 1MB/1000KB.
+          </div>
+        </ng-template>
+        <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+                class="close-button">Close</button>
+      </div>
+    

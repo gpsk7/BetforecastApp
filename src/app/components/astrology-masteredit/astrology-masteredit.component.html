@@ -1,0 +1,87 @@
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+        <span>{{ "astrologymasteredit.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button mat-button type="button" class="close-button close-button-colored" routerLink="/astrologyMaster">Back</button>
+      </div>
+    </mat-toolbar>
+  </div>
+    <mat-card class="form-page-box">
+      <form #bet="ngForm" [formGroup]="pmFormControl">
+        <div class="row form-fields-container">
+          <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "astrologymasteredit.id" | translate }}</mat-label>
+              <input matInput formControlName="id">
+            </mat-form-field>
+          </div> -->
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "astrologymasteredit.time" | translate }}</mat-label>
+              <input matInput formControlName="time">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "astrologymasteredit.date" | translate }}</mat-label>
+              <input matInput [matDatepicker]="datepicker" formControlName="date" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "astrologymasteredit.dasha" | translate }}</mat-label>
+              <input matInput formControlName="dasha" placeholder="Ex Sokolov">
+              <mat-error *ngIf="pmFormControl.get('dasha')?.hasError('pattern')">
+                Provide letters & spaces
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "astrologymasteredit.antarDasha" | translate }}</mat-label>
+              <input matInput formControlName="antarDasha" placeholder="Ex Pavlov">
+              <mat-error *ngIf="pmFormControl.get('antarDasha')?.hasError('pattern')">
+                Provide letters & spaces
+              </mat-error>
+            </mat-form-field>
+          </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+              <mat-form-field class="full-width-field" appearance="fill">
+                <mat-label>{{ "astrologyMaster.ownHouse" | translate }}</mat-label>
+                <input matInput formControlName="ownHouse" placeholder="Ex Sanctuary">
+                <mat-error *ngIf="pmFormControl.get('ownHouse')?.hasError('pattern')">
+                  Provide letters & spaces
+                </mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        
+
+        <div class="row form-fields-container footer-panel">
+          <!-- <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary">
+              {{ "astrologymasteredit.delete" | translate }}
+            </button>
+          </div> -->
+          <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary" (click)="updateAstrologyData()">
+              {{ "astrologymasteredit.update" | translate }}
+            </button>
+          </div>
+          <div class="buttons-right-align" *ngIf="!isEdit">
+            <button mat-raised-button color="primary"  (click)="addAstrologyData()" >
+              {{ "astrologymasteredit.create" | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  <!-- </div> -->

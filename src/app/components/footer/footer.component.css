@@ -1,0 +1,53 @@
+.footer {
+  font-family: 'robot', sans-serif;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 25px;
+  height: 50px;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  background-position: center;
+  text-align: center;
+
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.contact-info {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px; /* Decrease text size */
+}
+
+.contact-info span {
+  display: block;
+  margin: 5px 0; /* Add some spacing between contact info lines */
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px; /* Add some spacing above social media icons */
+}
+
+.social-media span {
+  margin-right: 10px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+  filter: invert(1); /* This will make the icons white if they are black by default */
+}

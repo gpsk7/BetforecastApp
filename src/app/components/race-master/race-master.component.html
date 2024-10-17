@@ -1,0 +1,210 @@
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Grid Table">dataset</mat-icon>
+        <span>{{ "raceMaster.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <button mat-button class="add-icon" aria-label="Add icon-button with add icon"
+        (click)="navigateToRaceMasterEdit({})">
+        <mat-icon>add</mat-icon> {{ "raceMaster.addRaceMaster" | translate }}
+      </button>
+      <button mat-button class="reverse-icon" aria-label="Fetch race details in reverse"
+        (click)="fetchRaceDetailsInReverse()">
+        <mat-icon>swap_vert</mat-icon> Reverse Order
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="grid-wrapper">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.id" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.date" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+      </ng-container>
+      <ng-container matColumnDef="course">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.course" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.course }}</td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.country" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+      </ng-container>
+      <ng-container matColumnDef="raceId">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.raceId" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.raceId }}</td>
+      </ng-container>
+      <ng-container matColumnDef="distance">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.raceDistance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.distance }}</td>
+      </ng-container>
+      <ng-container matColumnDef="raceNumber">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.raceNumber" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.raceNumber }}</td>
+      </ng-container>
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.time" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="raceType">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.raceType" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.raceType }}</td>
+      </ng-container> -->
+      <ng-container matColumnDef="horseName">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseName" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.horseName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="horseWeight">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseWeight" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.horseWeight }}</td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseAge" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+      </ng-container>
+      <ng-container matColumnDef="horseColour">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseColour" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.horseColour }}</td>
+      </ng-container>
+      <ng-container matColumnDef="jockeyName">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.jockeyName" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.jockeyName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="trainerName">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.trainerName" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.trainerName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="speed">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.speed" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.speed }}</td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="btnDistance">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.btnDistance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.btnDistance }}</td>
+      </ng-container> -->
+      <ng-container matColumnDef="drawnStall">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.drawnStall" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.drawnStall }}</td>
+      </ng-container>
+      <ng-container matColumnDef="horseBallot">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseBallot" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.horseBallot }}</td>
+      </ng-container>
+      <ng-container matColumnDef="finishPos">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.finishPos" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.finishPos }}</td>
+      </ng-container>
+      <ng-container matColumnDef="dayValue">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.dayValue" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.dayValue }}</td>
+      </ng-container>
+      <ng-container matColumnDef="form">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.form" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.form }}</td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="horseNameCount">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.horseNameCount" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.horseNameCount }}</td>
+      </ng-container>
+      <ng-container matColumnDef="jockeyNameCount">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.jockeyNameCount" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.jockeyNameCount }}</td>
+      </ng-container>
+      <ng-container matColumnDef="trainerNameCount">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.trainerNameCount" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.trainerNameCount }}</td>
+      </ng-container> -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "raceMaster.edit" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="grid-actions">
+          <mat-icon class="pointer" (click)="navigateToRaceMasterEdit(element)">edit</mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "astrologyMaster.delete" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="grid-actions">
+          <mat-icon class="pointer" (click)="deleteRace(element.id)">delete</mat-icon>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[25, 50, 100]"
+      (page)="handlePageEvent($event)" aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <div class="upload-container">
+    <input type="file" id="file-input" (change)="onFileChange($event)" accept=".csv" class="file-input" />
+    <ng-container *ngIf="!fileTooLarge; else errorTemplate">
+      <button (click)="uploadFile()" class="upload-button" [disabled]="isLoading"
+              [ngClass]="{ 'loading': isLoading }">
+        <span *ngIf="!isLoading" style="font-size: 13px;">Upload</span>
+        <span *ngIf="isLoading">Uploading...</span>
+      </button>
+    </ng-container>
+    <ng-template #errorTemplate>
+      <div class="error-message">
+        File size should not exceed 1MB/1000KB.
+      </div>
+    </ng-template>
+    <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+            class="close-button">Close</button>
+  </div>

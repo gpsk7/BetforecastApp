@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Race Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <div class="form-page-wrapper">
+    <div class="container-full">
+      <header class="header text-center">
+        <h1 style="font-size: 25px; font-weight: bolder;">Numerology Race Details</h1>
+      </header>
+      <div class="content mt-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Select Date</h5>
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="getCountries(); getValues()">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Country</h5>
+                  <div class="dropdown-section" *ngIf="countries.length > 0">
+                    <div>
+                      <button *ngFor="let country of countries" mat-button class="btn btn-country" (click)="selectCountry(country)">
+                        {{ country }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Values</h5>
+                  <div>
+                    <ul class="list-group">
+                      <li>
+                        <strong class="highlighted-value">Day Value:</strong> {{ values.dayValue }}, 
+                        <strong class="highlighted-value">Nature of Day:</strong> {{ values.natureOfDay }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <!-- <p>No additional values available for the selected date.</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Course</h5>
+                  <div class="dropdown-section" *ngIf="courses.length > 0">
+                    <div>
+                      <button *ngFor="let course of courses" mat-button class="btn btn-course" (click)="selectCourse(course)">
+                        {{ course }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Race Numbers and Times</h5>
+                  <div class="dropdown-section mt-3" *ngIf="raceNumbersAndTimes.length > 0">
+                    <div>
+                      <button *ngFor="let race of raceNumbersAndTimes" mat-button class="btn btn-race" (click)="selectRace(race)">
+                        RACE {{ race.raceNumber }} & TIME {{ race.time }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-12 mb-4">
+              <div class="card" *ngIf="raceDetails.length > 0">
+                <div class="card-body">
+                  <h5 class="card-title">Race Details</h5>
+                  <div *ngIf="selectedCountry || selectedCourse || selectedRace">
+                    <p *ngIf="selectedCountry"><strong>Selected Country:</strong> {{ selectedCountry }}</p>
+                    <p *ngIf="selectedCourse"><strong>Selected Course:</strong> {{ selectedCourse }}</p>
+                    <p *ngIf="selectedRace"><strong>Selected Race Number:</strong> RACE {{ selectedRace.raceNumber }} <strong>Time:</strong> {{ selectedRace.time }}</p>
+                  </div>
+                  <button class="btn btn-primary mb-3" style="margin-right: 10px;" (click)="exportToPDF()">Export to PDF</button>
+                  <button class="btn btn-primary mb-3" (click)="printRaceDetails()">Print</button>
+                  <div id="race-details-table">
+                    <table class="table table-bordered">
+                      <thead cdkDropList (cdkDropListDropped)="onColumnDrop($event)" cdkDropListOrientation="horizontal">
+                        <tr>
+                          <th *ngFor="let column of displayedColumns; let i = index"
+                              cdkDrag
+                              [cdkDragData]="{ index: i, column: column }" class="table-header">
+                              {{ getTranslation(column) | async }}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let race of raceDetails">
+                          <td *ngFor="let column of displayedColumns"> <ng-container *ngIf="column === 'predictionColor'; else defaultCell">
+                            <span 
+                              class="color-box" 
+                              [style.background-color]="race[column] | lowercase" 
+                              [attr.title]="race[column]">
+                            </span>
+                          </ng-container>
+                          <ng-template #defaultCell>
+                            {{ race[column] }}
+                          </ng-template>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<div class="row">
+  <div class="col-12 mb-4">
+    <div class="card" *ngIf="raceDetails.length > 0">
+      <div class="card-body">
+        <h5 class="card-title">Race Details</h5>
+        <div *ngIf="selectedCountry || selectedCourse || selectedRace">
+          <p *ngIf="selectedCountry"><strong>Selected Country:</strong> {{ selectedCountry }}</p>
+          <p *ngIf="selectedCourse"><strong>Selected Course:</strong> {{ selectedCourse }}</p>
+          <p *ngIf="selectedRace"><strong>Selected Race Number:</strong> RACE {{ selectedRace.raceNumber }} <strong>Time:</strong> {{ selectedRace.time }}</p>
+        </div>         
+        <!-- Export and Print buttons -->
+        <button class="btn btn-primary mb-3" style="margin-right: 10px;" (click)="exportToPDF()">Export to PDF</button>
+        <button class="btn btn-primary mb-3" (click)="printRaceDetails()">Print</button>
+        <div id="race-details-table">
+ <!-- Main card loop -->
+ <div *ngFor="let row of getChunkedRaceDetails()">
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let race of row">
+      <div class="card position-relative">
+        <!-- Prediction Color -->
+        <div class="prediction-color" *ngIf="race.predictionColor">
+          <span class="color-box" 
+                [style.background-color]="race.predictionColor | lowercase" 
+                [attr.title]="race.predictionColor">
+          </span>
+        </div>                  
+        <!-- Card Body -->
+        <div class="card-body">         
+          <!-- Horse Name, Trainer, Jockey -->
+          <div class="mb-3">
+            <p><strong>Horse Ballot:</strong> {{ race.horseBallot }}</p>
+            <p><strong>Drawn Stall:</strong> {{ race.drawnStall }}</p>
+            <p><strong>Horse Name:</strong> {{ race.horseName }} 
+              <span *ngIf="race.horseNameCount" class="count-blue">({{ race.horseNameCount }})</span>
+            </p>
+            <p><strong>Jockey Name:</strong> {{ race.jockeyName }}
+              <span *ngIf="race.jockeyNameCount" class="count-blue">({{ race.jockeyNameCount }})</span>
+            </p>
+            <p><strong>Trainer Name:</strong> {{ race.trainerName }}
+              <span *ngIf="race.trainerNameCount" class="count-blue">({{ race.trainerNameCount }})</span>
+            </p>                    
+          </div>                             
+          <!-- More Information button -->
+          <button class="btn btn-info mt-2" (click)="openMoreInfo(race)">More Information</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for more information -->
+<div *ngIf="isModalOpen" class="modal-overlay">
+<div class="modal-content">
+<h2>Additional Race Details</h2>
+  <p class="prediction-color-only">
+   <span class="color-box" [style.background-color]="selectedRaceDetails?.predictionColor | lowercase"></span>
+ </p>
+ <p><strong>Race ID:</strong> {{ selectedRaceDetails?.raceId }}</p>
+ <p><strong>Horse Ballot:</strong> {{ selectedRaceDetails?.horseBallot }}</p>
+ <p><strong>Drawn Stall:</strong> {{ selectedRaceDetails?.drawnStall }}</p>
+ <p><strong>Horse Name:</strong> {{ selectedRaceDetails?.horseName }}</p>
+ <p><strong>Trainer Name:</strong> {{ selectedRaceDetails?.trainerName }}</p>
+ <p><strong>Jockey Name:</strong> {{ selectedRaceDetails?.jockeyName }}</p>
+ <p><strong>Speed:</strong> {{ selectedRaceDetails?.speed }}</p>
+ <p><strong>Day Value:</strong> {{ selectedRaceDetails?.dayValue }}</p>
+ <p><strong>Finish Position:</strong> {{ selectedRaceDetails?.finishPos }}</p>
+ <p><strong>Horse Name Count:</strong> {{ selectedRaceDetails?.horseNameCount }}</p>
+ <p><strong>Jockey Name Count:</strong> {{ selectedRaceDetails?.jockeyNameCount }}</p>
+ <p><strong>Trainer Name Count:</strong> {{ selectedRaceDetails?.trainerNameCount }}</p>
+<button (click)="closeModal()" class="close-button">Close</button>
+</div>
+</div>

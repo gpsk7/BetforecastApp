@@ -1,0 +1,16 @@
+ <div class="Payment-amount-container">
+    <h2>Enter Amount</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="amount" style="font-size: 15px;">Amount:</label>
+      <input type="number" style="font-size: 15px;" id="amount" [(ngModel)]="amount" name="amount" required placeholder="Enter The Amount">
+      
+      <button type="submit" style="font-size: 15px;">Save Amount</button>
+    </form>
+    
+    <div *ngIf="currentAmount !== undefined" class="current-amount-box">
+      <p>Current Amount: INR {{ currentAmount }}</p>
+    </div>
+
+    <p>{{ message }}</p>
+  </div>
+  

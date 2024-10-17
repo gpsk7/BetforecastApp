@@ -1,0 +1,30 @@
+<!-- <img src="assets/images/background1.jpg" class="header-image"> -->
+
+<mat-toolbar class="color">
+  <a mat-button (click)="navigateToHome({})">
+    <mat-icon style="transform: scale(2.5);">home</mat-icon>
+  </a>
+  <!-- <a mat-button (click)="navigateToAstrology({})">Astrology</a>
+  <a mat-button (click)="navigateToNumerology({})"> Numerology</a>
+  <a mat-button (click)="navigateToRaceDetail({})">Races</a>
+  <a mat-button (click)="navigateToInplayMaster({})">Inplay</a>  -->
+<!-- Payment button with dropdown menu -->
+<button mat-button [matMenuTriggerFor]="paymentMenu">Payment</button>
+  <mat-menu #paymentMenu="matMenu">
+      <button mat-menu-item (click)="navigateToRecentPayments()">Previous Payments</button>
+      <button mat-menu-item (click)="navigateToNewPayments()">New Payment</button>
+  </mat-menu>
+  <div *ngIf="isAdmin">
+      <a mat-button (click)="navigateToAdmin({})">Admin</a>
+</div>
+<a mat-button (click)="navigateToYt({})">Youtube</a>
+<div class="spacer"></div>
+  <a mat-button (click)="navigateToLogout({})">Logout</a>
+  <a mat-button (click)="navigateToFeedback({})">Feedback</a>
+  <a mat-icon-button (click)="navigateToProfile({})">
+    <mat-icon style="font-size: 24px; color: white;">account_circle</mat-icon>
+  </a>
+</mat-toolbar>
+
+
+

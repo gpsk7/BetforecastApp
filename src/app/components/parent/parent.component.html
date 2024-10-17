@@ -1,0 +1,53 @@
+
+<!-- <h1>Parent Component</h1>
+<app-child (meassageEvent)="received($event)"></app-child>
+<p>{{message}}</p> -->
+
+<!-- <h1>Parent Component</h1>
+<p>SMS from Parent: {{ smsMessage }}</p>
+<app-child [sms]="smsMessage"></app-child> -->
+
+
+<p>{{tittle}}</p>
+<input type="text"[disabled]="isDisabled">
+
+<button (click)="click()">click</button>
+<p>{{message}}</p>
+
+<input [(ngModel)]="name" type="text">
+<p>{{name}}</p>
+
+<button (click)="toggleMessage()">Toggle Message</button>
+<p *ngIf="showMessage">Hello, this is a conditional message!</p>
+
+<h4>Fruits List</h4>
+<ul>
+    <li *ngFor="let items of items">{{items}}</li>
+</ul>
+
+<h2>Select a Color</h2>
+<button (click)="changeColor('red')">Red</button>
+<button (click)="changeColor('green')">Green</button>
+<button (click)="changeColor('blue')">Blue</button>
+
+<div [ngSwitch]="selectedColor">
+    <p *ngSwitchCase="'red'">You selected Red!</p>
+    <p *ngSwitchCase="'green'">You selected Green!</p>
+    <p *ngSwitchCase="'blue'">You selected Blue!</p>
+    <p *ngSwitchDefault>Please select a color.</p>
+</div>
+
+<h2>Reactive Form</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<p *ngIf="submitted">Form submitted successfully!</p>

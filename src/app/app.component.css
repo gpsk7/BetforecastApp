@@ -1,0 +1,32 @@
+/* Ensure the content wrapper takes full height */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main container holds the dynamic content */
+.container {
+    flex: 1;
+}
+
+/* Footer styles */
+app-footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* When the footer should be fixed */
+app-footer.static-footer {
+    position: fixed;
+     bottom: 0;
+}

@@ -1,0 +1,125 @@
+<div class="grid-toolbar">
+  <mat-toolbar>
+    <div class="form_header">
+      <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+      <span>{{ "horsemasteredit.title" | translate }}</span>
+    </div>
+    <span class="spacer"></span>
+    <div>
+      <button mat-button type="button" class="close-button close-button-colored" routerLink="/horseMaster">Back</button>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-card class="form-page-box">
+  <form #bet="ngForm" [formGroup]="pmFormControl">
+    <div class="row form-fields-container">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.name" | translate }}</mat-label>
+          <input matInput formControlName="name" placeholder="Ex Horse Name"/>
+          <mat-error *ngIf="pmFormControl.get('name')?.hasError('pattern')">
+            Provide letters & spaces
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.breed" | translate }}</mat-label>
+          <input matInput formControlName="breed" placeholder="Ex Arabian Horse"/>
+          <mat-error *ngIf="pmFormControl.get('breed')?.hasError('pattern')">
+            Provide letters & spaces
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.gender" | translate }}</mat-label>
+          <input matInput formControlName="gender" placeholder="Ex Male">
+          <mat-error *ngIf="pmFormControl.get('gender')?.hasError('pattern')">
+            Provide letters & spaces
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.color" | translate }}</mat-label>
+          <input matInput formControlName="color" placeholder="Ex Black">
+          <mat-error *ngIf="pmFormControl.get('color')?.hasError('pattern')">
+            Provide letters & spaces
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.age" | translate }}</mat-label>
+          <input matInput formControlName="age" placeholder="Ex Number">
+          <mat-error *ngIf="pmFormControl.get('age')?.hasError('pattern')">
+            Only numeric values.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.height" | translate }}</mat-label>
+          <input matInput formControlName="height" placeholder="Ex 2.5">
+          <mat-error *ngIf="pmFormControl.get('height')?.hasError('pattern')">
+            Please enter number with decimal points.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.weight" | translate }}</mat-label>
+          <input matInput formControlName="weight" placeholder="Ex 5.6">
+          <mat-error *ngIf="pmFormControl.get('weight')?.hasError('pattern')">
+            Please enter number with decimal points.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.registrationNumber" | translate }}</mat-label>
+          <input matInput formControlName="registrationNumber" placeholder="Ex Number">
+          <mat-error *ngIf="pmFormControl.get('registrationNumber')?.hasError('pattern')">
+            Only numeric values.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.count" | translate }}</mat-label>
+          <input matInput formControlName="count" placeholder="Ex Number">
+          <mat-error *ngIf="pmFormControl.get('count')?.hasError('pattern')">
+            Only numeric values.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>{{ "horsemasteredit.country" | translate }}</mat-label>
+          <input matInput formControlName="country" placeholder="Ex USA">
+          <mat-error *ngIf="pmFormControl.get('country')?.hasError('pattern')">
+            Provide letters & spaces
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row form-fields-container footer-panel">
+      <!-- <div class="buttons-right-align" *ngIf="isEdit">
+        <button mat-raised-button color="primary">
+          {{ "horsemasteredit.delete" | translate }}
+        </button>
+      </div> -->
+      <div class="buttons-right-align" *ngIf="isEdit">
+        <button mat-raised-button color="primary" (click)="updateHorseData()">
+          {{ "horsemasteredit.update" | translate }}
+        </button>
+      </div>
+      <div class="buttons-right-align" *ngIf="!isEdit">
+        <button mat-raised-button color="primary" (click)="addHorseData()">
+          {{ "horsemasteredit.create" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-card>

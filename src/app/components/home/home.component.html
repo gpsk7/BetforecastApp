@@ -1,0 +1,207 @@
+<!-- <img src="assets/images/background1.jpg" class="header-image">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Race Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <div class="info-paragraph">
+    <p>Unlock the thrill of horse racing like never before with our cutting-edge betting forecasts!
+      At <span class="highlight">Bet Forecast</span>, we offer expertly crafted predictions that transform the excitement of the racetrack into actionable insights.
+      Our team of seasoned analysts combines advanced data analytics with in-depth knowledge of horse racing trends to deliver forecasts that help you stay ahead of the game.
+      From assessing past performance to factoring in the latest track conditions and jockey statistics, we provide you with a competitive edge for placing smarter bets.
+      Whether you're a seasoned bettor or new to the sport, our forecasts empower you to make informed decisions and enhance your betting strategy. Dive into a world of precision and
+      passion with <span class="highlight">Bet Forecast</span>, and experience the future of horse race betting today!</p>
+</div>
+<div class="container-full">
+  <header class="header text-center">
+    <h1 style="font-weight: 700;">Race Details</h1>
+  </header>
+  <div class="content mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Select Date</h5>
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="getCountries()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Country</h5>
+              <div class="dropdown-section" *ngIf="countries.length > 0">
+                <div>
+                  <button *ngFor="let country of countries" mat-button class="btn btn-country" (click)="selectCountry(country)">
+                    {{ country }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Course</h5>
+              <div class="dropdown-section" *ngIf="courses.length > 0">
+                <div>
+                  <button *ngFor="let course of courses" mat-button class="btn btn-course" (click)="selectCourse(course)">
+                    {{ course }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Race Numbers and Times</h5>
+              <div class="dropdown-section mt-3" *ngIf="raceNumbersAndTimes.length > 0">
+                <div>
+                  <button *ngFor="let race of raceNumbersAndTimes" mat-button class="btn btn-race" (click)="selectRace(race)">
+                    RACE {{ race.raceNumber }} & TIME {{ race.time }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let row of getChunkedRaceDetails()">
+        <div class="row">
+          <div class="col-md-4 mb-3" *ngFor="let race of row">
+            <div class="card position-relative">
+             
+              <div class="prediction-color" *ngIf="race.predictionColor">
+                <span class="color-box" 
+                      [style.background-color]="race.predictionColor | lowercase" 
+                      [attr.title]="race.predictionColor">
+                </span>
+              </div>                  
+             
+              <div class="card-body">         
+              
+                <div class="mb-3">
+                  <p><strong>Horse Ballot:</strong> {{ race.horseBallot }}</p>
+                  <p><strong>Drawn Stall:</strong> {{ race.drawnStall }}</p>
+                  <p><strong>Horse Name:</strong> {{ race.horseName }} 
+                  </p>
+                  <p><strong>Jockey Name:</strong> {{ race.jockeyName }}
+                  </p>
+                  <p><strong>Trainer Name:</strong> {{ race.trainerName }}
+                  </p>                    
+                </div>                             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  -->
+
+  <!-- Modal for more information -->
+  <!-- <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Additional Race Details</h2>
+        <p class="prediction-color-only">
+         <span class="color-box" [style.background-color]="selectedRaceDetails?.predictionColor | lowercase"></span>
+       </p>
+       <p><strong>Race ID:</strong> {{ selectedRaceDetails?.raceId }}</p>
+       <p><strong>Horse Ballot:</strong> {{ selectedRaceDetails?.horseBallot }}</p>
+       <p><strong>Drawn Stall:</strong> {{ selectedRaceDetails?.drawnStall }}</p>
+       <p><strong>Horse Name:</strong> {{ selectedRaceDetails?.horseName }}</p>
+       <p><strong>Trainer Name:</strong> {{ selectedRaceDetails?.trainerName }}</p>
+       <p><strong>Jockey Name:</strong> {{ selectedRaceDetails?.jockeyName }}</p>
+       <p><strong>Speed:</strong> {{ selectedRaceDetails?.speed }}</p>
+       <p><strong>Day Value:</strong> {{ selectedRaceDetails?.dayValue }}</p>
+       <p><strong>Finish Position:</strong> {{ selectedRaceDetails?.finishPos }}</p>
+       <p><strong>Horse Name Count:</strong> {{ selectedRaceDetails?.horseNameCount }}</p>
+       <p><strong>Jockey Name Count:</strong> {{ selectedRaceDetails?.jockeyNameCount }}</p>
+       <p><strong>Trainer Name Count:</strong> {{ selectedRaceDetails?.trainerNameCount }}</p>
+   <button (click)="closeModal()" class="close-button">Close</button>
+ </div>
+</div> -->
+
+    <!-- </div>
+  </div>
+</div>
+</body>
+</html> -->
+
+
+<h1 class="page-title">Horse Racing Results</h1>
+<mat-divider></mat-divider>
+<br>
+<div class="today-date">
+  <button mat-button class="today-button" (click)="goToToday()">Today</button>
+  <span class="today-date-display">
+    {{ selectedDate ? (selectedDate | date:'MMMM d, y') : (todayDate | date:'MMMM d, y') }}
+  </span>
+
+  <mat-form-field appearance="outline" class="calendar-field">
+    <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" class="hidden-date-input" placeholder="Date" readonly>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<!-- <div class="date-selector-container"> -->
+  <div class="date-header">
+    <button mat-icon-button (click)="goToPreviousWeek()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="date-navigation">
+      <div *ngFor="let date of displayedDates" [class.selected]="isSelected(date)" [class.today]="isToday(date)"
+        class="date-item" (click)="selectDate(date)">
+        {{ date | date: 'EEE' }} <br />
+        {{ date | date: 'd' }}
+      </div>
+    </div>
+    <button mat-icon-button (click)="goToNextWeek()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+<!-- </div> -->
+<div *ngIf="isDateSelected" class="dropdown-container">
+  <mat-label class="countries-label">Countries</mat-label>
+  <div class="countries-list">
+    <div *ngFor="let country of countries" class="country-item">
+      <div (click)="toggleCourses(country)" class="country-header">
+        {{ country }}    
+        <div class="races-label">
+          Races
+          <mat-icon *ngIf="expandedCountry !== country">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="expandedCountry === country">keyboard_arrow_up</mat-icon>
+        </div>
+      </div>
+      <div *ngIf="expandedCountry === country" class="new-courses-container">
+        <div *ngFor="let course of countryCourses" class="course-item">
+          <div class="course-name">
+            {{ course }}
+          </div>
+          <div class="full-results" (click)="showRaceDetails(country, course)">
+            Full results
+          </div>
+        </div>
+      </div>
+      
+    </div>      
+  </div>
+</div>
+  
+ 
+

@@ -1,0 +1,124 @@
+<!-- <app-breadcrumb></app-breadcrumb> -->
+    <div class="grid-toolbar">
+        <mat-toolbar>
+          <div class="form_header">
+            <mat-icon aria-hidden="false" aria-label="Grid Table">dataset</mat-icon>
+            <span>{{ "inplayMaster.title" | translate }}</span>
+          </div>
+          <span class="spacer"></span>
+
+          <!-- Search Bar -->
+      <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Search by Time or Country or Date </mat-label>
+      <input matInput (keyup)="onSearchChange($event)" placeholder="Enter name or date">
+     </mat-form-field>
+        
+          <button mat-button class="add-icon" aria-label="Add icon-button with add icon"
+            (click)="navigateToInplayMasteredit({})">
+            <mat-icon>add</mat-icon> {{ "inplayMaster.addInplayMaster" | translate }}
+          </button>
+        </mat-toolbar>
+      </div>
+      <div class="grid-wrapper">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.id" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.time" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.date" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+          </ng-container>
+          <ng-container matColumnDef="course">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.course" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.course }}</td>
+          </ng-container>
+          <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.country" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+          </ng-container>
+          <ng-container matColumnDef="odds">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.odds" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.odds }}</td>
+          </ng-container>
+          <ng-container matColumnDef="position1">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.position1" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.position1 }}</td>
+          </ng-container>
+          <ng-container matColumnDef="position2">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.position2" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.position2 }}</td>
+          </ng-container>
+          <ng-container matColumnDef="position3">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.position3" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.position3 }}</td>
+          </ng-container>         
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "inplayMaster.edit" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element" class="grid-actions">
+              <mat-icon class="pointer" (click)="navigateToInplayMasteredit(element)">edit</mat-icon>
+            </td>
+          </ng-container>
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "inplayMaster.delete" | translate }}
+              </th>
+              <td mat-cell *matCellDef="let element" class="grid-actions">
+                <mat-icon class="pointer" (click)="deleteInplay(element.id)">delete</mat-icon>
+              </td>
+            </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[25, 50, 100]" (page)="handlePageEvent($event)" aria-label="Select page">
+        </mat-paginator>
+      </div>
+      <div class="upload-container">
+        <input type="file" id="file-input" (change)="onFileChange($event)" accept=".csv" class="file-input" />
+        <ng-container *ngIf="!fileTooLarge; else errorTemplate">
+          <button (click)="uploadFile()" class="upload-button" [disabled]="isLoading"
+                  [ngClass]="{ 'loading': isLoading }">
+            <span *ngIf="!isLoading" style="font-size: 13px;">Upload</span>
+            <span *ngIf="isLoading">Uploading...</span>
+          </button>
+        </ng-container>
+        <ng-template #errorTemplate>
+          <div class="error-message">
+            File size should not exceed 1MB/1000KB.
+          </div>
+        </ng-template>
+        <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+                class="close-button">Close</button>
+      </div>
+      
+              
+      
+      
+      
+    
+    

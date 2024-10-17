@@ -1,0 +1,110 @@
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+        <span>{{ "trainermasteredit.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button mat-button type="button" class="close-button close-button-colored"
+          routerLink="/trainerMaster">Back</button>
+      </div>
+    </mat-toolbar>
+  </div>
+  <mat-card class="form-page-box">
+    <form #bet="ngForm" [formGroup]="pmFormControl">
+      <div class="row form-fields-container">
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.id" | translate }}</mat-label>
+            <input matInput formControlName="id">
+          </mat-form-field>
+        </div> -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerName" | translate }}</mat-label>
+            <input matInput formControlName="trainerName" placeholder="Ex Carl Hester">
+            <mat-error *ngIf="pmFormControl.get('trainerName')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerCount" | translate }}</mat-label>
+            <input matInput formControlName="trainerCount" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('trainerCount')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerRegistrationId" | translate }}</mat-label>
+            <input matInput formControlName="trainerRegistrationId" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('trainerRegistrationId')?.hasError('pattern')">
+              Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerCountry" | translate }}</mat-label>
+            <input matInput formControlName="trainerCountry" placeholder="Ex USA">
+            <mat-error *ngIf="pmFormControl.get('trainerCountry')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerStable" | translate }}</mat-label>
+            <input matInput formControlName="trainerStable" placeholder="Ex Victory Valley Stables">
+            <mat-error *ngIf="pmFormControl.get('trainerStable')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row form-fields-container">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerAge" | translate }}</mat-label>
+            <input matInput formControlName="trainerAge" placeholder="Ex Number">
+            <mat-error *ngIf="pmFormControl.get('trainerAge')?.hasError('pattern')">
+             Only numeric values.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>{{ "trainermasteredit.trainerGender" | translate }}</mat-label>
+            <input matInput formControlName="trainerGender" placeholder="Ex Male">
+            <mat-error *ngIf="pmFormControl.get('trainerGender')?.hasError('pattern')">
+              Provide letters & spaces
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row form-fields-container footer-panel">
+        <!-- <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary">
+              {{ "trainermasteredit.delete" | translate }}
+            </button>
+          </div> -->
+        <div class="buttons-right-align" *ngIf="isEdit">
+          <button mat-raised-button color="primary" (click)="updateTrainer()">
+            {{ "trainermasteredit.update" | translate }}
+          </button>
+        </div>
+        <div class="buttons-right-align" *ngIf="!isEdit">
+          <button mat-raised-button color="primary" (click)="addTrainer()">
+            {{ "trainermasteredit.create" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+<!-- </div> -->

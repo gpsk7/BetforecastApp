@@ -1,0 +1,63 @@
+<!-- <div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search YouTube videos" />
+  <button (click)="searchVideos()">Search</button>
+</div>
+
+<div *ngIf="videos.length > 0" class="results-container">
+  <div *ngFor="let video of videos" class="video-card" (click)="selectVideo(video.id.videoId)">
+    <div class="thumbnail">
+      <img [src]="video.snippet.thumbnails.high.url" alt="{{ video.snippet.title }}" />
+    </div>
+    <div class="details">
+      <h3>{{ video.snippet.title }}</h3>
+      <p>{{ video.snippet.description }}</p>
+    </div>
+  </div>
+
+  
+  <div class="page-container">
+    <div class="pagination-controls">
+      <button (click)="goToPrevPage()" [disabled]="!prevPageToken">Previous</button>
+      <button (click)="goToNextPage()" [disabled]="!nextPageToken">Next</button>
+    </div>
+  </div>
+  
+
+<div *ngIf="selectedVideoUrl" class="video-player">
+  <iframe [src]="selectedVideoUrl" frameborder="0" allowfullscreen></iframe>
+</div> -->
+
+
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search YouTube videos" />
+  <button (click)="searchVideos()">Search</button>
+</div>
+
+<div *ngIf="videos.length > 0" class="results-container">
+  <div *ngFor="let video of videos" class="video-card" (click)="openVideo(video.id.videoId)">
+    <div class="thumbnail">
+      <img [src]="video.snippet.thumbnails.high.url" alt="{{ video.snippet.title }}" />
+    </div>
+    <div class="details">
+      <h3>{{ video.snippet.title }}</h3>
+      <p>{{ video.snippet.description }}</p>
+    </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="page-container">
+    <div class="pagination-controls">
+      <button (click)="goToPrevPage()" [disabled]="!prevPageToken">Previous</button>
+      <button (click)="goToNextPage()" [disabled]="!nextPageToken">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- Video Player Modal -->
+<div *ngIf="selectedVideoUrl" class="video-player-modal">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeVideo()">&times;</span>
+    <iframe [src]="selectedVideoUrl" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+

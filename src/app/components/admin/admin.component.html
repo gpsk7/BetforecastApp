@@ -1,0 +1,83 @@
+<!-- <div class="container mt-4">
+    <div class="row">
+      <div class="col text-center mb-4">
+        <button class="btn btn-primary btn-lg me-4" (click)="navigateToHorseMaster()">Horse Data</button>
+        <button class="btn btn-primary btn-lg mx-4" (click)="navigateToJockeyMaster()">Jockey Data</button>
+        <button class="btn btn-primary btn-lg ms-4" (click)="navigateToTrainerMaster()">Trainer Data</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center mb-4">
+        <button class="btn btn-primary btn-lg me-4" (click)="navigateToAllPayments()">All Payments</button>
+        <button class="btn btn-primary btn-lg mx-4" (click)="navigateToCoupon()">Coupons</button>
+        <button class="btn btn-primary btn-lg ms-4" (click)="navigateToPaymentAmount()">Payment Amount</button>
+      </div>
+    </div>
+  </div>
+   -->
+
+
+<!-- <mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen" class="example-sidenav">
+    <h3>Dashboard</h3>
+    <button mat-button class="menu-item" (click)="navigateToHorseMaster()">Horse Data</button>
+    <button mat-button class="menu-item" (click)="navigateToJockeyMaster()">Jockey Data</button>
+    <button mat-button class="menu-item" (click)="navigateToTrainerMaster()">Trainer Data</button>
+    <button mat-button class="menu-item" (click)="navigateToAllPayments()">All Payments</button>
+    <button mat-button class="menu-item" (click)="navigateToCoupon()">Coupons</button>
+    <button mat-button class="menu-item" (click)="navigateToPaymentAmount()">Payment Amount</button>
+  </mat-sidenav>
+</mat-sidenav-container> -->
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen" class="example-sidenav">
+    <h3>BETFORECAST</h3>
+    <button mat-button class="menu-item">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToAllUsers()">
+      <mat-icon>account_circle</mat-icon> Users
+    </button>
+    <!-- <button mat-button class="menu-item" (click)="navigateToHorseMaster()">
+      
+      <i class="fas fa-horse" style="font-size: 9px;"></i>Horse Data
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToJockeyMaster()">
+      <mat-icon>accessibility_new</mat-icon> Jockey Data
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToTrainerMaster()">
+      <mat-icon>sports</mat-icon> Trainer Data
+    </button> -->
+    <button mat-button class="menu-item" (click)="navigateToRaceMaster()">
+      <!-- <mat-icon>sports</mat-icon> Race Data -->
+      <i class="fas fa-horse" style="font-size: 9px;"></i> Race Data
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToAstrologyMaster()">
+      <mat-icon>star</mat-icon> Astrology Data
+      <!-- <i class="fas fa-astrology" style="font-size: 9px;"></i>Astrology Data -->
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToMoonMaster()">
+      <!-- <mat-icon>fas fa-moon</mat-icon> Moon Data -->
+      <i class="fas fa-moon" style="font-size: 9px;"></i> Moon Data
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToNatureMaster()">
+      <!-- <mat-icon>eco</mat-icon> Nature Of The Data -->
+      <i class="fas fa-tree" style="font-size: 9px;"></i> Nature Of The Data
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToAllPayments()">
+      <mat-icon>payments</mat-icon> All Payments
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToPaymentAmount()">
+      <mat-icon>attach_money</mat-icon> Set Amount
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToCoupon()">
+      <mat-icon>card_giftcard</mat-icon> Coupons
+    </button>
+    <button mat-button class="menu-item" (click)="navigateToClose()">
+      <mat-icon>highlight_off</mat-icon> Close
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-dashboard></app-dashboard>
+  </mat-sidenav-content>
+</mat-sidenav-container>

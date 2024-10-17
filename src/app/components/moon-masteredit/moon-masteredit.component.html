@@ -1,0 +1,62 @@
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon>
+        <span>{{ "moonmasteredit.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button mat-button type="button" class="close-button close-button-colored" routerLink="/moonMaster">Back</button>
+      </div>
+    </mat-toolbar>
+  </div>
+    <mat-card class="form-page-box">
+      <form #bet="ngForm" [formGroup]="pmFormControl">
+        <div class="row form-fields-container">
+          <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "moonmasteredit.id" | translate }}</mat-label>
+              <input matInput formControlName="id">
+            </mat-form-field>
+          </div> -->
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "moonmasteredit.date" | translate }}</mat-label>
+              <input matInput [matDatepicker]="datepicker" formControlName="date" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>{{ "moonmasteredit.moonDay" | translate }}</mat-label>
+              <input matInput formControlName="moonDay" placeholder="Ex Bliss">
+              <mat-error *ngIf="pmFormControl.get('moonDay')?.hasError('pattern')">
+                Provide letters & spaces
+              </mat-error>
+            </mat-form-field>
+          </div>             
+        </div>
+
+        <div class="row form-fields-container footer-panel">
+          <!-- <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary">
+              {{ "moonmasteredit.delete" | translate }}
+            </button>
+          </div> -->
+          <div class="buttons-right-align" *ngIf="isEdit">
+            <button mat-raised-button color="primary" (click)="updateMoonData()">
+              {{ "moonmasteredit.update" | translate }}
+            </button>
+          </div>
+          <div class="buttons-right-align" *ngIf="!isEdit">
+            <button mat-raised-button color="primary"  (click)="addMoonData()" >
+              {{ "moonmasteredit.create" | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  <!-- </div> -->

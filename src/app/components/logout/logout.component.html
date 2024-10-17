@@ -1,0 +1,23 @@
+<div class="logout-container">
+    <h2 style="font-size: 18px; text-align: center;">Logout</h2>
+    <form #logoutForm="ngForm" (ngSubmit)="onLogout()">
+        <div class="form-group">
+            <label>
+                <input type="checkbox" required [(ngModel)]="confirmLogout" name="confirmLogout">
+                Confirm Logout
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!logoutForm.valid" >Logout</button>
+    </form>
+</div>
+
+<!-- <div class="logout-container">
+    <h2>Logout</h2>
+    <p>Are you sure you want to log out?</p>
+    <label>
+      <input type="checkbox" [(ngModel)]="confirmLogout" name="confirmLogout" />
+      Confirm Logout
+    </label>
+    <button (click)="onLogout()">Logout</button>
+  </div>
+   -->

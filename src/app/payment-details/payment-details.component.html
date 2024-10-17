@@ -1,0 +1,102 @@
+<!-- <div class="container">
+  <h1 class="title">Payment Details</h1>
+
+  <div class="details-container">
+    <button mat-button type="button" mat-raised-button color="primary" (click)="getPaymentDetails()"
+    style="margin-left: 830px;">Details</button>
+
+    <div *ngIf="paymentDetails && paymentDetails.length > 0">
+      <h2>All Payment Details</h2>
+      <table class="details-table">
+        <thead>
+          <tr style="font-size: 15px;">
+            <th>ID</th>
+            <th>Payment ID</th>
+            <th>Order ID</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>UserId</th>
+            <th>Creation Time</th>
+            <th>Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of paymentDetails">
+            <td>{{ detail.id }}</td>
+            <td>{{ detail.paymentId }}</td>
+            <td>{{ detail.orderId }}</td>
+            <td>{{ detail.currency }}</td>
+            <td>{{ detail.amount / 100 | currency:"INR" }}</td>
+            <td>
+              <ng-container *ngIf="detail.status === 'payment_success'; else failed">
+                <span class="success">✓</span> Success
+              </ng-container>
+              <ng-template #failed>
+                <span class="failed">✗</span> Failed
+              </ng-template>
+            </td>
+            <td>{{ detail.creationTime | date: 'medium' }}</td>
+            <td>{{ detail.userId }}</td>
+            <td>{{ detail.creationTime }}</td>
+            <td>{{ detail.signature }}</td>
+           
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="payment-details-container">
+  <div *ngIf="paymentDetails.length > 0">
+    <h2 style="text-align: center;">All Payment Details</h2>
+    <table>
+      <thead>
+        <tr style="font-size: 15px;">
+          <th>ID</th>
+          <th>Payment ID</th>
+          <th>Order ID</th>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>UserId</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of paymentDetails" style="font-size: 13px;">
+          <td>{{ payment.id }}</td>
+          <td>{{ payment.paymentId }}</td>
+          <td>{{ payment.orderId }}</td>
+          <td>{{ payment.currency }}</td>
+          <td>{{ payment.amount / 100 | currency:"INR" }}</td>
+          <!-- <td>{{ payment.status }}</td> -->
+          <td>
+            <ng-container *ngIf="payment.status === 'payment_success'; else failed">
+              <span class="success">✓</span> Success
+            </ng-container>
+            <ng-template #failed>
+              <span class="failed">✗</span> Failed
+            </ng-template>
+          </td>
+          <td>{{ payment.creationTime | date: 'medium' }}</td>
+          <td>{{ payment.userId }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <!-- <button type="button" class="close-button" routerLink="/home">Close</button> -->
+    <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+      style="margin-left: 92%">Close</button>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,155 @@
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<!-- <div class="form-page-wrapper"> -->
+  <div class="grid-toolbar">
+    <mat-toolbar>
+      <div class="form_header">
+        <mat-icon aria-hidden="false" aria-label="Grid Table">dataset</mat-icon>
+        <span>{{ "horseMaster.title" | translate }}</span>
+      </div>
+      <span class="spacer"></span>
+
+      <!-- Search Bar -->
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Search by Name or Country</mat-label>
+      <input matInput (keyup)="onSearchChange($event)" placeholder="Enter horse name">
+    </mat-form-field>
+    
+      <button mat-button class="add-icon" aria-label="Add icon-button with add icon"
+        (click)="navigateToHorseMasteredit({})">
+        <mat-icon>add</mat-icon> {{ "horseMaster.addHorseMaster" | translate }}
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="grid-wrapper">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.id" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.name" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="breed">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.breed" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.breed }}</td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.gender" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+      </ng-container>
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.color" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.color }}</td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.age" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+      </ng-container>
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.height" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.height }}</td>
+      </ng-container>
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.weight" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+      <ng-container matColumnDef="registrationNumber">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.registrationNumber" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.registrationNumber }}</td>
+      </ng-container>
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.count" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.count }}</td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.country" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+      </ng-container>
+      <ng-container matColumnDef="speed">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.speed" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.speed }}</td>
+      </ng-container>
+      <ng-container matColumnDef="dam">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.dam" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.dam }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sire">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.sire" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.sire }}</td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "horseMaster.edit" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="grid-actions">
+          <mat-icon class="pointer" (click)="navigateToHorseMasteredit(element)">edit</mat-icon>
+        </td>
+      </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "astrologyMaster.delete" | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element" class="grid-actions">
+            <mat-icon class="pointer" (click)="deleteHorse(element.id)">delete</mat-icon>
+          </td>
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex"
+      [pageSizeOptions]="[25, 50, 100]" (page)="handlePageEvent($event)" aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <div class="upload-container">
+    <input type="file" id="file-input" (change)="onFileChange($event)" accept=".csv" class="file-input" />
+    <ng-container *ngIf="!fileTooLarge; else errorTemplate">
+      <button (click)="uploadFile()" class="upload-button" [disabled]="isLoading"
+              [ngClass]="{ 'loading': isLoading }">
+        <span *ngIf="!isLoading" style="font-size: 13px;">Upload</span>
+        <span *ngIf="isLoading">Uploading...</span>
+      </button>
+    </ng-container>
+    <ng-template #errorTemplate>
+      <div class="error-message">
+        File size should not exceed 1MB/1000KB.
+      </div>
+    </ng-template>
+    <button mat-button type="button" mat-raised-button color="primary" routerLink="/admin"
+            class="close-button">Close</button>
+  </div>
+  
+          
+  
+  
+  
+      
+
